@@ -7,6 +7,7 @@ let plus2 = document.querySelector('.plus2')
 let one = document.querySelector('.one')
 let three = document.querySelector('.three')
 let five = document.querySelector('.five')
+let seven = document.querySelector('.seven')
 
 // minuslar 
 let plus3 = document.querySelector('.plus3')
@@ -32,20 +33,36 @@ clear.addEventListener('click', () => {
     hour = 00
     minute = 00
     second = 00
+    millesecond = 00
     one.textContent = "00"
     three.textContent = "00"
     five.textContent = "00"
+    seven.textContent = "00"
 })
 
 let hour = 00,
     minute = 00,
     second = 00,
+    millesecond = 00,
     interval
 
 
 
 function startTimer() {
-    second++
+    millesecond++
+    if (millesecond < 9) {
+        seven.innerText = "0" + millesecond
+    }
+    if (millesecond > 9) {
+        seven.innerText = millesecond
+    }
+    if (millesecond > 60) {
+        second++
+        five.innerText = "0" + second
+        millesecond  = 0
+        seven.innerText = "0" + millesecond
+    }
+
     if (second < 9) {
         five.innerText = "0" + second
     }
